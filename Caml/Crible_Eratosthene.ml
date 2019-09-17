@@ -1,7 +1,9 @@
+(* Author : @ntaff *)
+
 (* Type séquence *)
-type ’a seq =
+type 'a seq =
 	Nil
-	| Cons of ’a * (unit -> ’a seq);;
+	| Cons of 'a * (unit -> 'a seq);;
 
 (* type ’a list =
 	[]
