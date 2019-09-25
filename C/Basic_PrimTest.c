@@ -6,8 +6,9 @@
 #include <math.h>
 #include <time.h>
 
-#
-ifndef __bool_true_false_are_defined || __bool_true_false_are_defined == 0# define true(1 == 1)# define false(!true)# endif
+#ifndef 
+__bool_true_false_are_defined || __bool_true_false_are_defined == 0# define true(1 == 1)# define false(!true)
+#endif
 
 int primtest(int prim) {
   int i = 3;
