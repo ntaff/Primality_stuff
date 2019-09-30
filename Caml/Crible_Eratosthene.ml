@@ -70,3 +70,30 @@ let crible = sieve (fromq 2);;
 
 (* TESTS *)
 takeq 12 crible ;; (* - : int list = [2; 3; 5; 7; 11; 13; 17; 19; 23; 29; 31; 37] *)
+
+(******************************************************************************)
+(********** Les fonctions suivantes sont spécifiques à Ocaml ******************)
+(********** et ne peuvent pas être utilisées sous Caml Light ******************)
+(******************************************************************************)
+
+(* Mélange la liste aléatoirement *)
+(* val shuffle : 'a list -> 'a list = <fun> *)
+let shuffle d = begin
+    Random.self_init ();
+    let nd = List.map (fun c -> (Random.bits (), c)) d in
+      let sond = List.sort compare nd in
+        List.map snd sond
+  end;;
+
+(* TESTS *)
+shuffle (takeq 12 crible);;
+
+(* Sélectionne un élément aléatoire parmis une liste  de nombres premiers mélangée *)
+(* val random_prim : int -> int = <fun> *)
+let random_prim = function
+n -> let lst = (shuffle (takeq n crible)) in
+        let p = Random.int (List.length lst) in
+          List.nth lst p ;;
+	  
+(* TESTS *)
+random_prim 100;;
